@@ -1,0 +1,63 @@
+import pprint
+
+f = open('/usr/share/dict/words','r')
+
+tris = {}
+bitrisum = {}
+trinum = 0
+starts = {}
+startnum = 0
+ends = {}
+endnum = 0
+l = f.readline()
+while l:
+    if l[-1:] == '\n':
+        l = l[:-1]
+
+    if len(l) < 3:
+        l = f.readline()
+        continue
+    
+    c = (l[0], l[1])
+    if starts.has_key(c):
+        starts[c] += 1
+    else:
+        starts[c] = 1
+    startnum += 1
+    l = l[1:]
+
+    c = (l[-2], l[-1])
+    if ends.has_key(c):
+        ends[c] += 1
+    else:
+        ends[c] = 1
+    endnum += 1
+    l = l[1:]
+        
+    for c in map(None, l[:-2], l[1:-1], l[2:]):
+        if tris.has_key(c):
+            tris[c] += 1
+        else:
+            tris[c] = 1
+        trinum += 1
+        (x, y, z) = c
+        if bitrisum.has_key((x, y)):
+            bitrisum[(x, y)] += 1
+        else:
+            bitrisum[(x, y)] = 1
+    
+    l = f.readline()
+
+print "startnum =", startnum
+print "endnum =", endnum
+print "trinum =", trinum
+print "starts = ",
+pprint.pprint(starts)
+print "endss = ",
+pprint.pprint(ends)
+print "bitrisum =",
+pprint.pprint(bitrisum)
+print "tris = ",
+pprint.pprint(tris)
+
+    
