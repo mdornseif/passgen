@@ -73,4 +73,7 @@ def test():
     print "genpasswd(11):        ", data
     assert data == 'KCPTHSG9LBC'
 
-print genpasswd(11, 3)
+if __name__ == '__main__':
+  import sys
+  sys.stdout.write(genpasswd(11, 3))
+  
