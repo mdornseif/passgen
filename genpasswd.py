@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Generate a somewhat random password which is sifficult to mess up.
+"""Generate a somewhat random password which is difficult to mess up.
 
    def genpasswd(l = 9, sepspace = 0, sepchar = '-'):
        Returning a passwort to the caller.
@@ -15,12 +15,11 @@
        genpasswd(11, 3, ' '): 'PXB CGC D5P'
        genpasswd(11):         'KCPTHSG9LBC'
 
-
        Note:
 
-       This passwords are of low crypograühic Quality. They were designed
+       This passwords are of low crypographic quality. They were designed
        to be resistent against typos when copying them from paper
-       to a web form. Don't expect any real entropy from them.
+       to a Web form. Don't expect any real entropy from them.
 
        
        Authors:
@@ -37,24 +36,17 @@ __copyright__ = """(c) 2001 twisd AG, Bonn - http://www.twisd.de/
 further distribution is granted under the terms of LGPL or classical
 MIT Licence."""
 
-# $Log: genpasswd.py,v $
-# Revision 1.1  2002/05/23 19:20:07  drt
-# Initial revision
-#
-# Revision 1.1  2001/05/04 12:23:31  drt
-# Initial Version.
-#
 
 import random
 
-source = '23456789ABCDFGHKLPQRSTXYZ'
+source = '23456789ABCDFGHKLPQRSTXYZabdefghpqrty'
 
 def genpasswd(l = 9, sepspace = 0, sepchar = '-'):
     """Generate a pseudo - random password.
 
     The password will be l chars long. If sepspace is not 0 there
     will be inserted a seperator every sepspace chars. The
-    default sechar is '-'.
+    default sepchar is '-'.
     """
     
     ret = ''
@@ -81,5 +73,4 @@ def test():
     print "genpasswd(11):        ", data
     assert data == 'KCPTHSG9LBC'
 
-if __name__ == '__main__':
-    test()
+print genpasswd(11, 3)
